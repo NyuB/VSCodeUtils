@@ -1,0 +1,123 @@
+{
+	// Place your snippets for makefile here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	
+	"CPP Basic" : {
+		"prefix" : "cppmake",
+		"description": "Cpp windows/linux project template including boost & gtest utilities",
+		"body": [
+			"CC=${1:g++}",
+			"CFLAGS=-Wall",
+			"OPTIM=${2:-O3}",
+			"INCLUDES=-I include",
+			"",
+			"#Project specifics and info",
+			"PROJECT_NAME=${3:MyProject}",
+			"EXEC_NAME=${4:main}",
+			"",
+			"#Boost related dependencies",
+			"INCLUDES_BOOST=-I ${5:C:/Dev/CLibs/boost_1_75_0}",
+			"LIBBOOST=",
+			"",
+			"#GTest related dependencies",
+			"GTEST_ROOT=${6:C:/Dev/CLibs/googletest-master/googletest}",
+			"INCLUDES_GTEST=-I \\${GTEST_ROOT}/include",
+			"LIBGTEST=-lgtest -L \\${GTEST_ROOT}/build",
+			"LIBGTEST_MAIN=-lgtest_main",
+			"",
+			"#GMock related dependencies",
+			"GMOCK_ROOT=${7:C:/Dev/CLibs/googletest-master/googlemock}",
+			"INCLUDES_GMOCK=-I \\${GMOCK_ROOT}/include",
+			"LIBGMOCK=-lgmock -L \\${GMOCK_ROOT}/build",
+			"LIBGMOCK_MAIN=-lgmock_main",
+			"",
+			"#List your tests' source files in the TESTS_SOURCES variable",
+			"TESTS_SOURCES=",
+			"#Choose the test suite to run {GTEST, GMOCK}",
+			"TEST_SUITE=GTEST",
+			"",
+			"LIBSSL=-lssl -lcrypto",
+			"LIBTHREAD=-lpthread",
+			"",
+			"#OS Specifics",
+			"#Defaults for linux-based os",
+			"RM=rm",
+			"MAIN=\\${EXEC_NAME}",
+			"ALLTESTS=alltests",
+			"LIBSOCK=",
+			"#Specify your actual os here -> this can be overriden at making (e.g 'make ${3} OS=LIN' to make for linux environment)",
+			"OS=${8:WIN}",
+			"ifeq (\\${OS}, WIN)",
+			"#Windows here",
+			"RM=del /f",
+			"MAIN=\\${EXEC_NAME}.exe",
+			"LIBSOCK=-lwsock32 -lWs2_32",
+			"ALLTESTS=\\${ALLTESTS}.exe",
+			"else ifeq (\\${OS}, LINUX)//Define Linux dll and special flags here",
+			"#Linux here",
+			"else",
+			"endif",
+			"",
+			"#Targets",
+			"",
+			"\\${EXEC_NAME}: bin/\\${MAIN}",
+			"bin/\\${MAIN}: src/\\${EXEC_NAME}.cpp",
+				"\t\\${CC} \\${INCLUDES} -o bin/\\${EXEC_NAME} src/\\${EXEC_NAME}.cpp",
+			"",
+			"#Project structure rules",
+			"structure:",
+				"\t-mkdir bin",
+				"\t-mkdir out",
+				"\t-mkdir src",
+				"\t-mkdir include",
+				"\t-mkdir tests",
+			"clean:",
+				"\t-\\${RM} out/*.o",
+				"\t-\\${RM} bin/*.o",
+			"",
+			"#Test management",
+			"alltests: tests/\\${ALLTESTS}",
+			"tests/\\${ALLTESTS}: \\${TESTS_SOURCES}",
+			"ifeq (\\${TEST_SUITE}, GTEST)",
+				"\t\\${CC} \\${CFLAGS} \\${INCLUDES_GTEST} ${LIBGTEST_MAIN} \\${LIBGTEST} -o tests/alltests \\${TESTS_SOURCES}",
+			"else ifeq (\\${TEST_SUITE}, GMOCK)",
+				"\t\\${CC} \\${CFLAGS} \\${INCLUDES_GTEST} \\${INCLUDES_GMOCK} ${LIBGMOCK_MAIN} \\${LIBGTEST} \\${LIBGMOCK} -o tests/alltests \\${TESTS_SOURCES}",
+			"endif",
+			"#Gtest static libraries building",
+			"install_gtest:",
+				"\t-cd \\${GTEST_ROOT} && mkdir build",
+				"\tcd \\${GTEST_ROOT} && \\${CC} -c src/gtest-all.cc src/gtest_main.cc -I include -I .",
+				"\tcd \\${GTEST_ROOT} && ar rs build/libgtest.a gtest-all.o",
+				"\tcd \\${GTEST_ROOT} && ar rs build/libgtest_main.a gtest_main.o",
+				"\t-cd \\${GTEST_ROOT} && \\${RM} *.o",
+			"install_gmock:",
+				"\t-cd \\${GMOCK_ROOT} && mkdir build",
+				"\tcd \\${GMOCK_ROOT} && \\${CC} -c src/gmock-all.cc src/gmock_main.cc -I include -I . \\${INCLUDES_GTEST}",
+				"\tcd \\${GMOCK_ROOT} && ar rs build/libgmock.a gmock-all.o",
+				"\tcd \\${GMOCK_ROOT} && ar rs build/libgmock_main.a gmock_main.o",
+				"\t-cd \\${GMOCK_ROOT} && \\${RM} *.o",
+		]
+	},
+	"cpp hpp -> o":{
+		"prefix": "cho",
+		"description": "Compile .cpp and .hpp into .o",
+		"body": [
+			"${1:___}.o: $1.cpp $1.hpp ${2:header_deps.hpp ...}",
+				"\t\\${CC} \\${CFLAGS} \\${OPTIM} \\${INCLUDES} -o $1.o -c $1.cpp"
+		]
+
+	}
+
+	
+}
