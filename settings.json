@@ -1,29 +1,44 @@
 {
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
-    "terminal.integrated.shellArgs.windows": [],
-    "files.autoSave": "afterDelay",
-    "workbench.colorTheme": "Visual Studio Light",
+    "workbench.colorTheme": "Default Light Modern",
     "workbench.colorCustomizations": {
-        "terminal.background": "#FFFFFF",
-        "terminal.foreground": "#000000",
-        "editor.background": "#f0e8d6b7"
-    },
-    "editor.tokenColorCustomizations": {
-        "comments": "#555555"
-    },
-    "editor.fontWeight": "bold",
-    "terminal.explorerKind": "external",
-    "editor.semanticTokenColorCustomizations": {
-        "rules":{
-            "function": "#AA00AA",
-            "method": "#AA00AA",
-            "type": "#028f3b",
-            "comment": "#ff0000",
-            "operator": "#1900ff",
-            "memberOperatorOverload": "#1900ff",
-            "namespace": "#028f3b"
+        "editor.background": "#e7ddc8",
+        "terminal.background": "#e7ddc8",
+        "[Default Light Modern]": {
+            "activityBar.activeBackground": "#e7ddc8",
+            "tab.activeBackground": "#e7ddc8",
+            "activityBar.foreground":"#da6b03",
+
+            "sideBar.background":"#e7ddc817",
+
+            "activityBar.background": "#e4e0d9",
+            "activityBar.inactiveForeground": "#774210fa",
+            "tab.inactiveBackground": "#e4e0d9",
         }
-    }
+    },
+    "files.watcherExclude": {
+        // Scala
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "files.autoSave": "afterDelay",
+    "files.eol": "\n",
+    "editor.fontLigatures": true,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "files.exclude": {
+        "**/.git": false
+    },
+    "zig.path": "zig",
+    "files.associations": {
+        "*.pl": "prolog"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.fontFamily": "'ADD HERE','Cascadia Code', Consolas, 'Courier New', monospace",
+    "zig.zls.enabled": "on",
+    "C_Cpp.formatting": "clangFormat",
+    "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "sameLine",
+    "C_Cpp.clang_format_fallbackStyle": "LLVM",
+    "makefile.configureOnOpen": false,
+    "chat.commandCenter.enabled": false,
 }
