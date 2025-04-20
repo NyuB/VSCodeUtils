@@ -1,0 +1,57 @@
+{
+	"Test case": {
+		"scope": "cpp,hpp,h",
+		"prefix": "tst",
+		"body": [
+			"TEST_CASE(\"$1\") {",
+			"\t$0",
+			"}"
+		],
+		"description": "doctest test case"
+	},
+	"assertEqual (surround with)": {
+		"scope": "cpp,hpp,h",
+		"body": [
+			"CHECK(${TM_SELECTED_TEXT} == $1);"
+		],
+		"description": "doctest assert equal"
+	},
+	"assertEqual": {
+		"scope": "cpp,hpp,h",
+		"prefix": "assertEqual",
+		"body": [
+			"CHECK($1 == $2);"
+		],
+		"description": "doctest assert equal"
+	},
+	"assertTrue (surround with)": {
+		"scope": "cpp,hpp,h",
+		"body": [
+			"REQUIRE(${TM_SELECTED_TEXT});"
+		],
+		"description": "doctest assert true"
+	},
+	"assertTrue": {
+		"scope": "cpp,hpp,h",
+		"prefix": "assertTrue",
+		"body": [
+			"REQUIRE($1);"
+		],
+		"description": "doctest assert true"
+	},
+	"assertFalse (surround with)": {
+		"scope": "cpp,hpp,h",
+		"body": [
+			"REQUIRE(!${TM_SELECTED_TEXT});"
+		],
+		"description": "doctest assert false"
+	},
+	"assertFalse": {
+		"scope": "cpp,hpp,h",
+		"prefix": "assertFalse",
+		"body": [
+			"REQUIRE(!$1);"
+		],
+		"description": "doctest assert false"
+	},
+}
