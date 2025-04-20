@@ -1,6 +1,11 @@
 # VSCodeUtils
 Vs code settings and snippets
 
-c_cpp_properties.json : (Windows template for G++11 with boost and gtest) C/C++ Extension -> Extension Settings
-makefile.json : Preferences -> User Snippets -> Makefile
-settings.json : Preferences -> Settings
+## Global settings
+- [settings.json](settings.json)
+
+## C++
+- [global code snippets](cpp.json)
+- [googletest code snippets](googletest.code-snippets)
+- [doctest code snippets](doctest.code-snippets)
+- [cmake settings](cmake.settings.json)
