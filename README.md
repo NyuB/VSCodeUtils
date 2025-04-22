@@ -2,6 +2,7 @@
 Vs code settings and snippets
 
 ## Global settings
+- [keybindings.json](keybindings.json)
 - [settings.json](settings.json)
 
 ## C++
