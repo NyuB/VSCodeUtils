@@ -403,5 +403,15 @@
         "key": "ctrl+k ctrl+f",
         "command": "-editor.action.formatSelection",
         "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+oem_1",
+        "command": "editor.action.insertSnippet",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+alt+j",
+        "command": "-editor.action.insertSnippet",
+        "when": "editorTextFocus && !editorReadonly && editorLangId == 'powershell'"
     }
 ]
