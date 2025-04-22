@@ -1,14 +1,15 @@
 {
-	"surround with if": {
+	// Control structures
+	"Surround with if": {
 		"body": [
-			"if (${0}) {",
+			"if (${1:condition}) {",
 			"\t${TM_SELECTED_TEXT}",
 			"}",
-			"${1|else { }, |}",
+			"${2|else { }, |}",
 		],
 		"description": "Surround with if block"
 	},
-	"use as if condition": {
+	"Use as if condition": {
 		"body": [
 			"if (${TM_SELECTED_TEXT}) {",
 			"\t${0}",
@@ -17,16 +18,39 @@
 		],
 		"description": "Use as condition of an if block"
 	},
-	"foreach": {
+	"For-each": {
 		"body": [
-			"for (const auto& ${2:item}: ${1}) {",
+			"for (const auto& ${2:item}: ${1:${TM_SELECTED_TEXT}}) {",
 			"\t${0}",
 			"}",
 		],
 		"prefix": "foreach",
-		"description": "Surround with foreach loop"
+		"description": "foreach"
 	},
-	"disable clang format": {
+	// std types
+	"Optional": {
+		"body": [
+			"std::optional<${1:${TM_SELECTED_TEXT}}>"
+		],
+		"prefix": "opt",
+		"description": "std::optional"
+	},
+	"String": {
+		"body": [
+			"std::string"
+		],
+		"prefix": "str",
+		"description": "std::string"
+	},
+	"Vector": {
+		"body": [
+			"std::vector<${1:${TM_SELECTED_TEXT}}>"
+		],
+		"prefix": "vec",
+		"description": "std::vector"
+	},
+	// Misc
+	"Disable clang format": {
 		"body": [
 			"// clang-format off",
 			"${TM_SELECTED_TEXT}",
