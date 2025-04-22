@@ -2,7 +2,7 @@
 	"Test case": {
 		"scope": "cpp,hpp,h",
 		"body": [
-			"TEST(${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/g}}, Test_${2:${RANDOM}}) {",
+			"TEST(${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/g}}, ${2:Test_${RANDOM}}) {",
 			"\t${0}",
 			"}",
 		],
@@ -12,7 +12,7 @@
 	"Test case with fixture": {
 		"scope": "cpp,hpp,h",
 		"body": [
-			"TEST(${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/g}}, Test_${2:${RANDOM}}) {",
+			"TEST(${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/g}}, ${2:Test_${RANDOM}}) {",
 			"${0}",
 			"}",
 		],
@@ -21,89 +21,49 @@
 	},
 	// Assertions
 	// assertThat ♥️
-	"assertThat (surround with)": {
-		"scope": "cpp,hpp,h",
-		"body": "ASSERT_THAT(${TM_SELECTED_TEXT}, ${1:testing::Eq}(${2:expected}));"
-	},
 	"assertThat": {
 		"scope": "cpp,hpp,h",
-		"body": "ASSERT_THAT(${0:subject}, ${1:testing::Eq}(${2:expected}));",
-		"prefix": "assertThat",
+		"body": "ASSERT_THAT(${1:${TM_SELECTED_TEXT:subject}}, ${2:testing::Eq}(${3:expected}));"
 	},
 	// Equality
-	"assertEqual (surround with)": {
-		"scope": "cpp,hpp,h",
-		"body": "ASSERT_EQ(${TM_SELECTED_TEXT}, ${1:expected});"
-	},
 	"assertEqual": {
 		"scope": "cpp,hpp,h",
-		"body": "ASSERT_EQ(${0:actual}, ${1:expected});",
-		"prefix": "assertEqual",
-	},
-	// true/false
-	"assertTrue (surround with)": {
-		"scope": "cpp,hpp,h",
-		"body": "ASSERT_TRUE(${TM_SELECTED_TEXT})"
+		"body": "ASSERT_EQ(${1:${TM_SELECTED_TEXT:actual}}, ${2:expected});"
 	},
 	"assertTrue": {
 		"scope": "cpp,hpp,h",
-		"body": "ASSERT_TRUE(${0:subject})",
+		"body": "ASSERT_TRUE(${1:${TM_SELECTED_TEXT}});",
 		"prefix": "assertTrue",
-	},
-	"assertFalse (surround with)": {
-		"scope": "cpp,hpp,h",
-		"body": "ASSERT_FALSE(${TM_SELECTED_TEXT})"
 	},
 	"assertFalse": {
 		"scope": "cpp,hpp,h",
-		"body": "ASSERT_FALSE(${0:subject})",
+		"body": "ASSERT_FALSE(${1:${TM_SELECTED_TEXT}});",
 		"prefix": "assertFalse",
 	},
 	// Binary comparisons
-	"assertCompare (surround with)": {
-		"scope": "cpp,hpp,h",
-		"body": "ASSERT_${2|GT,LT,GE,LE|}(${TM_SELECTED_TEXT}, ${1:compared_with});"
-	},
 	"assertCompare": {
 		"scope": "cpp,hpp,h",
-		"body": "ASSERT_${3|GT,LT,GE,LE|}(${1:subject}, ${2:compared_with});",
+		"body": "ASSERT_${3|GT,LT,GE,LE|}(${1:${TM_SELECTED_TEXT:subject}}, ${2:compared_with});",
 		"prefix": "assertCompare",
 	},
 	// Floating point number relaxed equality
-	"assertFloatEqual (surround with)": {
-		"scope": "cpp,hpp,h",
-		"body": "ASSERT_${2|DOUBLE,FLOAT|}_EQ(${TM_SELECTED_TEXT}, ${1:compared_with});"
-	},
 	"assertFloatEqual": {
 		"scope": "cpp,hpp,h",
-		"body": "ASSERT_${3|DOUBLE,FLOAT|}_EQ(${1:subject}, ${2:compared_with});",
+		"body": "ASSERT_${3|DOUBLE,FLOAT|}_EQ(${1:${TM_SELECTED_TEXT:subject}}, ${2:compared_with});",
 		"prefix": "assertFloatEqual"
-	},
-	// Compare numbers with tolerance
-	"assertClose (surround with)": {
-		"scope": "cpp,hpp,h",
-		"body": "ASSERT_NEAR(${TM_SELECTED_TEXT}, ${1:compared_with}, ${2:tolerance});"
 	},
 	"assertClose": {
 		"scope": "cpp,hpp,h",
-		"body": "ASSERT_NEAR(${1:subject}, ${2:compared_with}, ${3:tolerance});",
+		"body": "ASSERT_NEAR(${1:${TM_SELECTED_TEXT:subject}}, ${2:compared_with}, ${3:tolerance});",
 		"prefix": "assertClose",
 	},
 	// Exceptions
-	"assertThrow (surround with)": {
-		"scope": "cpp,hpp,h",
-		"body": [
-			"ASSERT_THROW({",
-			"\t${TM_SELECTED_TEXT}",
-			"}, ${1:Exception});",
-		],
-	},
 	"assertThrow": {
 		"scope": "cpp,hpp,h",
 		"body": [
 			"ASSERT_THROW({",
-			"\t$0",
-			"}, ${2:Exception});",
+			"\t${0:${TM_SELECTED_TEXT}}",
+			"}, ${1:Exception});",
 		],
 		"prefix": "assertThrow",
 	},
