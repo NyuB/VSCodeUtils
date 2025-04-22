@@ -23,39 +23,48 @@
 	// assertThat ♥️
 	"assertThat": {
 		"scope": "cpp,hpp,h",
-		"body": "ASSERT_THAT(${1:${TM_SELECTED_TEXT:subject}}, ${2:testing::Eq}(${3:expected}));"
+		"body": "ASSERT_THAT(${1:${TM_SELECTED_TEXT:subject}}, ${2:testing::Eq}(${3:expected}));",
+		"prefix": "assertThat",
+		"description": "gtest assertThat",
 	},
 	// Equality
 	"assertEqual": {
 		"scope": "cpp,hpp,h",
-		"body": "ASSERT_EQ(${1:${TM_SELECTED_TEXT:actual}}, ${2:expected});"
+		"body": "ASSERT_EQ(${1:${TM_SELECTED_TEXT:actual}}, ${2:expected});",
+		"prefix": "assertEqual",
+		"description": "gtest assertEqual",
 	},
 	"assertTrue": {
 		"scope": "cpp,hpp,h",
 		"body": "ASSERT_TRUE(${1:${TM_SELECTED_TEXT}});",
 		"prefix": "assertTrue",
+		"description": "gtest assertTrue",
 	},
 	"assertFalse": {
 		"scope": "cpp,hpp,h",
 		"body": "ASSERT_FALSE(${1:${TM_SELECTED_TEXT}});",
 		"prefix": "assertFalse",
+		"description": "gtest assertFalse",
 	},
 	// Binary comparisons
 	"assertCompare": {
 		"scope": "cpp,hpp,h",
 		"body": "ASSERT_${3|GT,LT,GE,LE|}(${1:${TM_SELECTED_TEXT:subject}}, ${2:compared_with});",
 		"prefix": "assertCompare",
+		"description": "gtest assertCompare",
 	},
 	// Floating point number relaxed equality
 	"assertFloatEqual": {
 		"scope": "cpp,hpp,h",
 		"body": "ASSERT_${3|DOUBLE,FLOAT|}_EQ(${1:${TM_SELECTED_TEXT:subject}}, ${2:compared_with});",
-		"prefix": "assertFloatEqual"
+		"prefix": "assertFloatEqual",
+		"description": "gtest assertFloatEqual",
 	},
 	"assertClose": {
 		"scope": "cpp,hpp,h",
 		"body": "ASSERT_NEAR(${1:${TM_SELECTED_TEXT:subject}}, ${2:compared_with}, ${3:tolerance});",
 		"prefix": "assertClose",
+		"description": "gtest assertClose",
 	},
 	// Exceptions
 	"assertThrow": {
@@ -66,5 +75,6 @@
 			"}, ${1:Exception});",
 		],
 		"prefix": "assertThrow",
+		"description": "gtest assertThrow",
 	},
 }
